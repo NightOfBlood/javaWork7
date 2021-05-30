@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="student" type="com.example.demo.models.Student"*/-->
+<!--<p th:text="${student.getLastName()}">Test</p>-->
+
+<div th:switch="${student}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2>Студенты</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Last name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Favorite subject</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${student}">
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.age}"></td>
+                <td th:text="${student.course}"></td>
+                <td th:text="${student.favoriteSubject}"></td>
+                <td><a th:href="@{/update/{id}(id=${student.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signup">Add a new user</a></p>
+</div>
+
+<div th:switch="${teacher}">
+    <h2 th:case="null">No teacher yet!</h2>
+    <div th:case="*">
+        <h2>Студенты</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Last name</th>
+                <th>Age</th>
+                <th>Name of subject</th>
+                <th>Work experience</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="Teacher : ${teacher}">
+                <td th:text="${teacher.lastName}"></td>
+                <td th:text="${teacher.age}"></td>
+                <td th:text="${teacher.nameOfSubject}"></td>
+                <td th:text="${teacher.workExperience}"></td>
+                <td><a th:href="@{/update/{id}(id=${teacher.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${teacher.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signup">Add a new user</a></p>
+</div>
+
+<div th:switch="${department}">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2>Студенты</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${student}">
+                <td th:text="${student.lastName}"></td>
+                <td><a th:href="@{/update/{id}(id=${student.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${student.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signup">Add a new Depart</a></p>
+</div>
+
+
+</body>
+</html>
